@@ -1,0 +1,22 @@
+{
+    "name": "Mycspace - TEAM NAME",
+    "repository": "https://github.com/Aboisier/CS2019_TSE_seed",
+    "scripts": {},
+    "env": {
+        "FRONT_END_ORIGIN": "*"
+    },
+    "addons": [
+        "mongolab:sandbox"
+    ],
+    "buildpacks": [
+        {
+            "url": "heroku/nodejs"
+        }
+    ],
+    "formation": {
+        "web": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
