@@ -7,7 +7,7 @@
         "build": "tsc && cpy src/log4js.json build/ && cpy frontend/**/* build/  --parents",
         "postinstall": "npm run build",
         "test": "mocha -r ts-node/register src/**/*.spec.ts",
-        "start-watch": "nodemon"
+        "start-watch": "cross-env NODE_ENV=development nodemon"
     },
     "author": "",
     "license": "ISC",
@@ -37,7 +37,9 @@
         "@types/uuid": "^3.4.4",
         "chai": "^4.1.2",
         "cpy-cli": "^2.0.0",
+        "cross-env": "^5.2.0",
         "mocha": "^5.2.0",
+        "nodemon": "^1.18.10",
         "ts-node": "^7.0.1",
         "typemoq": "^2.1.0"
     },

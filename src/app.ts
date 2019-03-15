@@ -44,5 +44,5 @@ app.listen(process.env.PORT || 8080, () => {
 });
 
 function isDev() {
-    return process.env.NODE_ENV.toString() === 'development';
+    return process.env.NODE_ENV === 'development';
 }
