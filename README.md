@@ -2,6 +2,8 @@
 
 Pour configurer votre projet, suivez les étapes suivantes:
 
+Lien rapide vers le dashboard: https://cs2019-tse-infra-dashboard.herokuapp.com/#/home.
+
 ## Configurer votre environnement de travail
 
 ### Configurer les variables d'environnement
@@ -55,6 +57,6 @@ Rendez-vous à la [page suivante](https://cs2019-tse-infra-dashboard.herokuapp.c
 
 Il est ici question de l'avenir des uni-vers. Biensur, il est important d'implémenter les fonctionnalités, mais ce qui est plus important encore, c'est la qualité de votre logiciel. 
 
-Votre solution sera jugée à 30% sur les fonctionnalités par un système automatisé de tests. À chaque heure, le contenu de votre repository sera déployé, et votre serveur sera soumis à une batterie de tests. Les résultats seront visibles sur votre page d'équipe sous la section [tests](https://cs2019-tse-infra-dashboard.herokuapp.com/#/team).
+Votre solution sera jugée à 30% sur les fonctionnalités par un système automatisé de tests. À chaque heure, le contenu de votre *repository* sera déployé, et votre serveur sera soumis à une batterie de tests. Les résultats seront visibles sur votre page d'équipe sous la section [tests](https://cs2019-tse-infra-dashboard.herokuapp.com/#/team).
 
-Le 70% restant sera jugé par différents professionels du milieu. Ceux-ci jugeront la qualité de votre code, de votre processus, etc. Par exemple, vous gagnerez des points si vous écrivez des tests de qualité, si votre architecture est bien pensée, si votre code est lisible, si votre équipe s'organise de façon efficace, etc. Vous en perdrez si vos messages de commits sont de mauvaise qualité, si votre code est illisible, si vous n'avez pas de tests, etc.
+Le 70% restant sera jugé par différents professionels du milieu. Ceux-ci jugeront la qualité de votre code, de votre architecture, de vos tests, de votre processus, etc. Par exemple, vous gagnerez des points si vous écrivez des tests de qualité, si votre architecture est bien pensée, si votre code est lisible et cohérent, si votre équipe s'organise de façon efficace, etc. Vous en perdrez si vos messages de commits sont de mauvaise qualité, si votre code est illisible, si vous n'avez pas de tests, etc.
