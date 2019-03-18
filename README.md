@@ -1,3 +1,6 @@
+[![codecov](https://codecov.io/gh/Aboisier/cs2019-The-floor-is-LAVAL/branch/master/graph/badge.svg?token=I6k08oACUp)](https://codecov.io/gh/Aboisier/cs2019-The-floor-is-LAVAL)
+[![Build Status](https://travis-ci.com/Aboisier/cs2019-The-floor-is-LAVAL.svg?token=vuBsBM3yD6PMvt3zwT9s&branch=master)](https://travis-ci.com/Aboisier/cs2019-The-floor-is-LAVAL)
+
 # Readme
 
 Pour configurer votre projet, suivez les étapes suivantes:
