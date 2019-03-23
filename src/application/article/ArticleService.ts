@@ -34,4 +34,9 @@ export class ArticleService {
     if (!article) throw new ArticleNotFoundException(articleId);
     return this.articleAssembler.toLongArticleResponse(article);
   }
+
+  public async getAllArticlesForUser(userId: string) {
+    const articles = await this.articleRepository.getAllForUser(userId);
+    return articles.map((article) => this.articleAssembler.toLongArticleResponse(article))
+  }
 }

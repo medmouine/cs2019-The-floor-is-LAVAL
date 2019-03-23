@@ -14,7 +14,8 @@ let articleAssembler: ArticleAssembler;
 beforeEach(() => {
   articleRepository = {
     getAllArticles: async () => null,
-    getById: async (articleId: string) => null
+    getById: async (articleId: string) => null,
+    getAllForUser: async (userId: string) => null
   };
   articleAssembler = createMockInstance(ArticleAssembler);
   articleService = new ArticleService(articleRepository, articleAssembler);
@@ -97,4 +98,31 @@ describe('When getting an article by id', () => {
     })
   });
 });
+
+describe('When getting articles from a user id', () => {
+  const USER_ID: string = "nvih98eh43";
+  let article: Article;
+  let articleLongResponse: LongArticleResponse;
+
+  beforeEach(() => {
+    // @ts-ignore
+    article = createMockInstance(Article);
+    // @ts-ignore
+    articleRepository.getAllForUser = async (id) => {
+      if (id == USER_ID) return [article]
+    };
+    // @ts-ignore
+    articleAssembler.toLongArticleResponse.mockImplementation((a) => {
+        if (article == a)
+          return articleLongResponse;
+      }
+    );
+  });
+
+  it('should return the right articles', async (done) => {
+    expect(await articleService.getAllArticlesForUser(USER_ID)).toEqual([articleLongResponse]);
+    done()
+  });
+});
+
 
