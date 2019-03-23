@@ -9,11 +9,12 @@ export async function handleAlreadyExistingAccount(callback: () => Promise<any>,
   try {
     res.json(await callback());
   } catch (e) {
-    if (e instanceof AccountAlreadyExistsError ) {
-      res.status(HttpStatus.CONFLICT);
+    if (!!e.type && e.type === AccountAlreadyExistsError) {
+      res.status(HttpStatus.INTERNAL_SERVER_ERROR);
     } else {
       res.status(HttpStatus.BAD_REQUEST);
     }
+
     logger.error(e.message);
     res.json({ message: e.message });
   }

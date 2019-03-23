@@ -15,7 +15,7 @@ import {logger} from './logger';
 import * as dotenv from 'dotenv';
 import './interfaces/http/accounts/AccountController'
 import './interfaces/http/healthcheck/HealthCheckController'
-import './interfaces/http/accounts/AuthController'
+import './interfaces/http/account/AuthController'
 import binding from "./binding";
 
 if (isDev()) dotenv.config();

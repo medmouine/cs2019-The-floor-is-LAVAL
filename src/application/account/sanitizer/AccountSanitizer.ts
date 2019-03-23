@@ -4,7 +4,7 @@ import Sanitizer from "../../global/sanitiser/Sanitizer";
 
 @injectable()
 export default class AccountSanitizer implements Sanitizer<Account> {
-  public sanitize(object: Account): Account {
+  public sanitize(account: Account): Account {
     return undefined;
   }
 }

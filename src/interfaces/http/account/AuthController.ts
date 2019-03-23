@@ -14,8 +14,11 @@ export const BASE_AUTH_URL: string = '/auth';
 @controller(BASE_AUTH_URL)
 export class AuthController {
 
-  @inject(TYPE.AccountService)
   private readonly accountService: AccountService;
+
+  constructor(@inject(TYPE.AccountService) accountService: AccountService) {
+    this.accountService = accountService;
+  }
 
   @httpPost('/createAccount')
   public async createAccount(@requestBody() accountCreationRequest: AccountCreationRequest, @response() res: express.Response): Promise<Account> {

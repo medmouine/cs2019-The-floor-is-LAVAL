@@ -57,6 +57,8 @@
     "cpy-cli": "^2.0.0",
     "jest": "^24.1.0",
     "jest-create-mock-instance": "^1.1.0",
+    "jest-express": "^1.10.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.10",
     "nyc": "^13.3.0",
     "ts-jest": "^24.0.0",

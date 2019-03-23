@@ -9,6 +9,7 @@ import AccountSanitizer from "./application/account/sanitizer/AccountSanitizer";
 import {AccountRepository} from "./domain/account/persistence/AccountRepository";
 import {MockAccountRepository} from "./application/account/persistence/repository/MockAccountRepository";
 import {AccountFactory} from "./application/account/AccountFactory";
+import {AccountRequestValidator} from "./application/account/requests/validator/AccountRequestValidator";
 
 
 export default function (container: Container): void {
@@ -21,5 +22,6 @@ export default function (container: Container): void {
   container.bind<AccountSanitizer>(TYPES.AccountSanitizer).to(AccountSanitizer);
   container.bind<AccountRepository>(TYPES.AccountRepository).to(MockAccountRepository);
   container.bind<AccountFactory>(TYPES.AccountFactory).to(AccountFactory)
+  container.bind<AccountRequestValidator>(TYPES.AccountRequestValidator).to(AccountRequestValidator);
 }
 
