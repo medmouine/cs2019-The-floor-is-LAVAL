@@ -6,6 +6,9 @@ import {AccountCreationRequest} from "../../../application/account/requests/Acco
 import {Account} from "../../../domain/account/Account";
 
 jest.mock('uuid/v4');
+jest.mock('bcrypt');
+
+import { genSalt, hash } from "bcrypt";
 import { v4 as uuid } from 'uuid';
 
 let accountFactory: AccountFactory = null;
@@ -34,13 +37,15 @@ beforeEach(() => {
   // @ts-ignore
   uuid.mockReturnValueOnce(ACCOUNT_ID);
   // @ts-ignore
-  uuid.mockReturnValueOnce(PASSWORD_SALT);
-
+  genSalt.mockReturnValueOnce(PASSWORD_SALT);
+  // @ts-ignore
+  hash.mockReturnValueOnce(PASSWORD)
 });
 
 describe('When create account', () => {
-  it('account should be valid',  () => {
-    const expected: Account = accountFactory.create(accountCreationRequest);
-    expect(expected).toEqual(account)
+  it('account should be valid',  async (done) => {
+    const expected: Account = await  accountFactory.create(accountCreationRequest);
+    expect(expected).toEqual(account);
+    done();
   });
 });

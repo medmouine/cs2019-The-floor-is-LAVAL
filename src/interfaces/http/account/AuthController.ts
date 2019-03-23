@@ -8,6 +8,7 @@ import {inject} from "inversify";
 import TYPE from '../../../context/types'
 import {Account} from "../../../domain/account/Account";
 import AccountService from "../../../application/account/AccountService";
+import {Credentials} from "../../../application/account/requests/Credentials";
 
 export const BASE_AUTH_URL: string = '/auth';
 
@@ -24,5 +25,11 @@ export class AuthController {
   public async createAccount(@requestBody() accountCreationRequest: AccountCreationRequest, @response() res: express.Response): Promise<Account> {
     res.status(HttpStatus.CREATED);
     return handleServiceError(async () => await this.accountService.createAccount(accountCreationRequest), res);
+  }
+
+  @httpPost('/authenticate')
+  public async authenticate(@requestBody() credentials: Credentials, @response() res: express.Response): Promise<string> {
+    res.status(HttpStatus.SUCCESS);
+    return handleServiceError(async () => await this.accountService.authenticate(credentials), res);
   }
 }

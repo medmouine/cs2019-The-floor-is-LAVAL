@@ -1,6 +1,7 @@
 import {Account} from "../Account";
 
 export interface AccountRepository {
-  createAccount(account: Account): Promise<Account>;
+  findById(accountId: string): Promise<Account>;
+  createAccount(account: Account): Promise<void>;
   findByEmail(email: string): Promise<Account>;
 }
