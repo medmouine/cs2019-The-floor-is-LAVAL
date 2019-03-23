@@ -1,7 +1,9 @@
 import {HealthCheckStatus} from "./HealthCheckStatus";
+import {injectable} from "inversify";
 
+@injectable()
 export class HealthCheckProvider {
-  public getStatus(): HealthCheckStatus {
+  public getHealthStatus(): HealthCheckStatus {
     return new HealthCheckStatus();
   }
 }
