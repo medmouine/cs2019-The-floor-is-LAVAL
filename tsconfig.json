@@ -1,42 +1,43 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "lib": [
-            "es6"
-        ],
-        "rootDir": "./src/",
-        "outDir": "./build/",
-        "module": "commonjs",
-        "declaration": true,
-        "noImplicitAny": false,
-        "removeComments": true,
-        "experimentalDecorators": true,
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "sourceMap": true,
-        "inlineSources": true,
-        "baseUrl": ".",
-        "types": [
-            "reflect-metadata",
-            "mocha",
-            "chai",
-            "typemoq"
-        ],
-        "paths": {
-            "*": [
-                "*",
-                "./src/@types_local/*"
-            ]
-        },
-        "typeRoots": [
-            "./node_modules/@types",
-            "./src/@types_local"
-        ]
-    },
-    "include": [
-        "src/**/*.ts",
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "es6"
     ],
-    "exclude": [
-        "node_modules"
+    "rootDir": "./src/",
+    "outDir": "./build/",
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "baseUrl": ".",
+    "types": [
+      "reflect-metadata",
+      "jest",
+      "typemoq"
+    ],
+    "paths": {
+      "*": [
+        "*",
+        "./src/@types_local/*",
+        "./*"
+      ]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types_local"
     ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "node_modules/@types/jest/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

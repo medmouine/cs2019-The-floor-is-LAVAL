@@ -1,6 +1,6 @@
 export class HealthCheckStatus {
   public static readonly STATUS_UP: string = "Up";
-  private status: string;
+  public readonly status: string;
 
   constructor() {
     this.status = HealthCheckStatus.STATUS_UP;

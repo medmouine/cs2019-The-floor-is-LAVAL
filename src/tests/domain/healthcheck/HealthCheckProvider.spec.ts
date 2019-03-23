@@ -1,5 +1,5 @@
+import "reflect-metadata";
 import {HealthCheckProvider} from "../../../domain/healthcheck/HealthCheckProvider";
-import {HealthCheckStatus} from "../../../domain/healthcheck/HealthCheckStatus";
 
 let healthCheckProvider: HealthCheckProvider;
 
@@ -9,8 +9,8 @@ beforeEach(() => {
 
 describe('When getting the status', () => {
   it('should return that the status is up', () => {
-    const expectedStatus = new HealthCheckStatus();
+    const expectedStatus = "Up";
 
-    expect(healthCheckProvider.getStatus()).toEqual(expectedStatus);
+    expect(healthCheckProvider.getHealthStatus().status).toEqual(expectedStatus);
   });
 });
