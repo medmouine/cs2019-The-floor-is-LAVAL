@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start": "cross-env NODE_ENV=development node ./build/app.js",
+    "lint": "tslint --project tslint.json",
     "start-watch": "cross-env NODE_ENV=development nodemon",
     "build": "tsc && cpy src/log4js.json build/ && cpy frontend/**/* build/  --parents",
     "postinstall": "npm run build",
@@ -47,6 +48,9 @@
     "nodemon": "^1.18.10",
     "nyc": "^13.3.0",
     "ts-node": "^7.0.1",
+    "tslint": "^5.10.0",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.17.0",
     "typemoq": "^2.1.0"
   },
   "nyc": {
