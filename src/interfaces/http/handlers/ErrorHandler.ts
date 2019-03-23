@@ -36,10 +36,10 @@ export async function handleNoneExistingEntity(callback: () => Promise<any>, res
 
 export async function handleNoneMatchingCredentials(callback: () => Promise<any>, res: express.Response): Promise<any> {
   try {
-    res.json(await callback());
+    res.json({ acccessToken: await callback() });
   } catch (e) {
     if (e instanceof CredentialsDoesNotMatchError) {
-      res.status(HttpStatus.UNAUTHORIZED);
+      res.status(HttpStatus.FORBIDDEN);
     } else {
       res.status(HttpStatus.BAD_REQUEST);
     }

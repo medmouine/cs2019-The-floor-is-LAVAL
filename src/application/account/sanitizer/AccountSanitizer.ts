@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import {Account} from 'src/domain/account/Account';
-import Sanitizer from "../../global/sanitiser/Sanitizer";
+import Sanitizer from "../../global/sanitizer/Sanitizer";
 
 @injectable()
 export default class AccountSanitizer implements Sanitizer<Account> {
