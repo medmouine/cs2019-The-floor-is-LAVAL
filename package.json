@@ -33,8 +33,10 @@
     "reflect-metadata": "^0.1.12",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
+    "winston": "^3.2.1",
+    "typescript": "^3.0.3",
     "uuid": "^3.3.2",
-    "winston": "^3.2.1"
+    "joi": "latest"
   },
   "devDependencies": {
     "@types/body-parser": "^1.17.0",
@@ -56,6 +58,8 @@
     "cpy-cli": "^2.0.0",
     "jest": "^24.1.0",
     "jest-create-mock-instance": "^1.1.0",
+    "jest-express": "^1.10.0",
+    "mocha": "^5.2.0",
     "nodemon": "^1.18.10",
     "nyc": "^13.3.0",
     "ts-jest": "^24.0.0",
