@@ -59,7 +59,9 @@ describe('When creating an account from valid parameters', () => {
       // @ts-ignore
       createAccount: jest.fn(async (newAccount: Account) => newAccount),
       // @ts-ignore
-      findByEmail: jest.fn(async (email: string) => undefined)
+      findByEmail: jest.fn(async (email: string) => undefined),
+      // @ts-ignore
+      findById: jest.fn(async (id: string) => account)
     };
     accountService = new AccountService(accountSanitizer, accountRepository, accountFactory, accountRequestValidator);
   });
@@ -90,7 +92,9 @@ describe('When creating an account from invalid parameters', () => {
       // @ts-ignore
       createAccount: jest.fn(async (newAccount: Account) => newAccount),
       // @ts-ignore
-      findByEmail: jest.fn(async (email: string) => undefined)
+      findByEmail: jest.fn(async (email: string) => undefined),
+      // @ts-ignore
+      findById: jest.fn(async (id: string) => account)
     };
     accountService = new AccountService(accountSanitizer, accountRepository, accountFactory, accountRequestValidator);
   });

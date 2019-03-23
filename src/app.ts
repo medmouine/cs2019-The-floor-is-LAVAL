@@ -12,7 +12,6 @@ import * as methodOverride from 'method-override';
 import * as morgan from 'morgan';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
-import './interfaces/http/accounts/AccountController'
 import './interfaces/http/healthcheck/HealthCheckController'
 import './interfaces/http/articles/ArticleController'
 import './interfaces/http/account/AuthController'
