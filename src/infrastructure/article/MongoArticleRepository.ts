@@ -24,4 +24,8 @@ export class MongoArticleRepository implements ArticleRepository {
       });
     });
   }
+
+  getById(articleId: string): Promise<Article> {
+    return this.mongoClient.db.collection(ARTICLES_COLLECTION).findOne({id: articleId});
+  }
 }

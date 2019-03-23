@@ -5,8 +5,18 @@ export class Article {
   private _leadParagraph: string;
   private _imageUrl: string;
   private _body: string;
+  private _author: string;
+  private _userId: string;
   private _date: Date;
   private _category: string;
+
+  get userId(): string {
+    return this._userId;
+  }
+
+  get author(): string {
+    return this._author;
+  }
 
 
   get id(): string {

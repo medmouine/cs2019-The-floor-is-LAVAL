@@ -3,7 +3,7 @@ import {controller, httpPost, requestBody, response} from 'inversify-express-uti
 import {HttpStatus} from "../HttpStatus";
 import {AccountCreationRequest} from "../../../application/account/requests/AccountCreationRequest";
 import * as express from 'express'
-import {handleAlreadyExistingAccount} from "../handlers/ErrorHandler";
+import {handleServiceError} from "../ErrorHandler";
 import {inject} from "inversify";
 import TYPE from '../../../context/types'
 import {Account} from "../../../domain/account/Account";
@@ -23,6 +23,6 @@ export class AuthController {
   @httpPost('/createAccount')
   public async createAccount(@requestBody() accountCreationRequest: AccountCreationRequest, @response() res: express.Response): Promise<Account> {
     res.status(HttpStatus.CREATED);
-    return handleAlreadyExistingAccount(async () => await this.accountService.createAccount(accountCreationRequest), res);
+    return handleServiceError(async () => await this.accountService.createAccount(accountCreationRequest), res);
   }
 }
