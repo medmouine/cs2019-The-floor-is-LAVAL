@@ -1,29 +1,49 @@
-import {MongoClient} from 'mongodb';
-import {inject, injectable} from 'inversify';
-import TYPES from '../../context/types';
-import {Account} from '../../domain/account/Account';
+import {inject, injectable} from "inversify";
+import TYPES from "../../context/types";
+import {MongoDBClient} from "../mongo/MongoClient";
 import {AccountRepository} from "../../domain/account/persistence/AccountRepository";
+import {Account} from "../../domain/account/Account";
+
 
 @injectable()
-class MongoAccountRepository implements AccountRepository {
+export class MongoAccountRepository implements AccountRepository {
   private static ACCOUNT_COLLECTION = 'account';
+  private readonly mongoClient: MongoDBClient;
 
-  private readonly mongoClient: MongoClient;
-
-  constructor(@inject(TYPES.MongoDBClient) mongoClient: MongoClient) {
+  constructor(@inject(TYPES.MongoDBClient) mongoClient: MongoDBClient) {
     this.mongoClient = mongoClient;
   }
 
-  createAccount(account: Account): Promise<Account> {
-    return undefined;
+  createAccount(account: Account): Promise<void> {
+    return new Promise((resolve, reject) => {
+      return this.mongoClient.db.collection(MongoAccountRepository.ACCOUNT_COLLECTION).insertOne(account, (error) => {
+        if (error) {
+          reject(error);
+        }
+        resolve()
+      });
+    });
   }
 
-  public async findByEmail(email: string): Promise<Account> {
+  findByEmail(email: string): Promise<Account> {
     return new Promise((resolve, reject) => {
       return this.mongoClient.db.collection(MongoAccountRepository.ACCOUNT_COLLECTION).findOne({ email }, (error, find) => {
         if (error) {
           reject(error);
         }
+        if (!!find) delete find._id;
+        resolve(find);
+      });
+    });
+  }
+
+  findById(userId: string): Promise<Account> {
+    return new Promise((resolve, reject) => {
+      return this.mongoClient.db.collection(MongoAccountRepository.ACCOUNT_COLLECTION).findOne({ userId }, (error, find) => {
+        if (error) {
+          reject(error);
+        }
+        delete find._id;
         resolve(find);
       });
     });

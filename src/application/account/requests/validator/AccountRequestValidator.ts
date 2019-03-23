@@ -3,6 +3,7 @@ import {RequestValidationError} from "../../exceptions/RequestValidationError";
 import * as Joi from 'joi';
 import {injectable} from "inversify";
 import {Credentials, CredentialsSchema} from "../Credentials";
+import {logger} from "../../../../logger";
 
 @injectable()
 export class AccountRequestValidator {
