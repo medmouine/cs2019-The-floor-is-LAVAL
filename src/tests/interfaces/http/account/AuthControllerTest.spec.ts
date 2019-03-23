@@ -1,15 +1,14 @@
 //tslint:disable
 import 'reflect-metadata';
 import jestCreateMockInstance from 'jest-create-mock-instance';
-import Mocked = jest.Mocked;
 import AccountService from '../../../../application/account/AccountService';
 import {AuthController} from '../../../../interfaces/http/account/AuthController';
 import {AccountCreationRequest} from '../../../../application/account/requests/AccountCreationRequest';
 import {Account} from '../../../../domain/account/Account';
-import { Response } from 'jest-express/lib/response';
-import * as express from 'express'
+import {Response} from 'jest-express/lib/response';
 import {HttpStatus} from "../../../../interfaces/http/HttpStatus";
 import {AccountAlreadyExistsError} from "../../../../application/account/exceptions/AccountAlreadyExistsError";
+import Mocked = jest.Mocked;
 
 let accountService: Mocked<AccountService> = null;
 let res: Response = new Response();
@@ -95,7 +94,7 @@ describe('When error thrown during account creation', () => {
     });
     // @ts-ignore
     await authController.createAccount(accountCreationRequest, res);
-    expect(res.status).toHaveBeenLastCalledWith(HttpStatus.BAD_REQUEST);
+    expect(res.status).toHaveBeenLastCalledWith(HttpStatus.INTERNAL_SERVER_ERROR);
     done();
   });
 
@@ -105,7 +104,7 @@ describe('When error thrown during account creation', () => {
     });
     // @ts-ignore
     await authController.createAccount(accountCreationRequest, res);
-    expect(res.json).toHaveBeenLastCalledWith({ message: customError.message } );
+    expect(res.json).toHaveBeenLastCalledWith({message: customError.message});
     done();
   });
 });

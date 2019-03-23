@@ -3,6 +3,8 @@ import {inject, injectable} from "inversify";
 import TYPES from "../../context/types";
 import {ArticleAssembler} from "./assembler/ArticleAssembler";
 import {ShortArticleResponse} from "./response/ShortArticleResponse";
+import {LongArticleResponse} from "./response/LongArticleResponse";
+import {ArticleNotFoundException} from "./exceptions/ArticleNotFoundException";
 import moment = require("moment");
 
 @injectable()
@@ -25,5 +27,11 @@ export class ArticleService {
         // @ts-ignore
         return moment(b.date) - moment(a.date);
       });
+  }
+
+  public async getArticleById(articleId: string): Promise<LongArticleResponse> {
+    const article = await this.articleRepository.getById(articleId);
+    if (!article) throw new ArticleNotFoundException(articleId);
+    return this.articleAssembler.toLongArticleResponse(article);
   }
 }

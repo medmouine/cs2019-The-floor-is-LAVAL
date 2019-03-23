@@ -41,8 +41,7 @@
     "typemoq": "^2.1.0",
     "typescript": "^3.0.3",
     "uuid": "^3.3.2",
-    "winston": "^3.2.1",
-    "bcrypt": "latest"
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@types/bcrypt": "^3.0.0",

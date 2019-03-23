@@ -5,6 +5,7 @@ import {ArticleAssembler} from "../../../application/article/assembler/ArticleAs
 import createMockInstance from "jest-create-mock-instance";
 import {Article} from "../../../domain/article/Article";
 import {ShortArticleResponse} from "../../../application/article/response/ShortArticleResponse";
+import {LongArticleResponse} from "../../../application/article/response/LongArticleResponse";
 
 let articleService: ArticleService;
 let articleRepository: ArticleRepository;
@@ -12,7 +13,8 @@ let articleAssembler: ArticleAssembler;
 
 beforeEach(() => {
   articleRepository = {
-    getAllArticles: async () => null
+    getAllArticles: async () => null,
+    getById: async (articleId: string) => null
   };
   articleAssembler = createMockInstance(ArticleAssembler);
   articleService = new ArticleService(articleRepository, articleAssembler);
@@ -60,3 +62,39 @@ describe('When getting all the articles', () => {
     done();
   })
 });
+
+describe('When getting an article by id', () => {
+  const ARTICLE_ID: string = "nvih98eh43";
+  let article: Article;
+  let articleLongResponse: LongArticleResponse;
+
+  beforeEach(() => {
+    // @ts-ignore
+    article = createMockInstance(Article);
+    articleRepository.getById = async (id) => {
+      if (id == ARTICLE_ID) return article
+    };
+    // @ts-ignore
+    articleAssembler.toLongArticleResponse.mockImplementation((a) => {
+        if (article == a)
+          return articleLongResponse;
+      }
+    );
+  });
+
+  it('should return the right article', async (done) => {
+    expect(await articleService.getArticleById(ARTICLE_ID)).toBe(articleLongResponse);
+    done()
+  });
+
+  describe('when the article does not exists', () => {
+    beforeEach(() => {
+      articleRepository.getById = async () => null;
+    });
+
+    it('should raise an exception', async () => {
+      return expect(articleService.getArticleById(ARTICLE_ID)).rejects.toThrow(Error)
+    })
+  });
+});
+
