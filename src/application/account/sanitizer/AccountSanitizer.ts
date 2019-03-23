@@ -5,6 +5,9 @@ import Sanitizer from "../../global/sanitiser/Sanitizer";
 @injectable()
 export default class AccountSanitizer implements Sanitizer<Account> {
   public sanitize(account: Account): Account {
-    return undefined;
+    const accountToSanitize: Account = account;
+    delete accountToSanitize.passwordSalt;
+    delete accountToSanitize.passwordHash;
+    return accountToSanitize;
   }
 }
