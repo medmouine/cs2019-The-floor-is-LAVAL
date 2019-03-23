@@ -28,4 +28,15 @@ export class MongoArticleRepository implements ArticleRepository {
   getById(articleId: string): Promise<Article> {
     return this.mongoClient.db.collection(ARTICLES_COLLECTION).findOne({id: articleId});
   }
+
+  getAllForUser(userId: string): Promise<Article[]> {
+    return new Promise((resolve, reject) => {
+      return this.mongoClient.db.collection(ARTICLES_COLLECTION).find({userId}).toArray((error, find) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(find);
+      });
+    });
+  }
 }

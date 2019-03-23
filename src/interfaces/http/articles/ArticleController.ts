@@ -26,4 +26,9 @@ export class ArticleController {
   public async getArticleById(@requestParam('articleId') articleId: string, @response() res: express.Response): Promise<LongArticleResponse> {
     return handleServiceError(() => this.articleService.getArticleById(articleId), res);
   }
+
+  @httpGet('/user/:userId')
+  public async getAllArticlesForUser(@requestParam('userId') userId: string) {
+    return this.articleService.getAllArticlesForUser(userId);
+  }
 }

@@ -68,3 +68,23 @@ describe('when getting an article by id', () => {
     })
   })
 });
+
+describe('when getting the articles given to a user by id', () => {
+  const USER_ID: string = "98sdfu98sdfh98";
+  let articleResponse: LongArticleResponse;
+
+  beforeEach(() => {
+
+    // @ts-ignore
+    articleResponse = {};
+    // @ts-ignore
+    articleService.getAllArticlesForUser.mockImplementation((id) => {
+      if (id === USER_ID) return [articleResponse]
+    });
+  });
+
+  it('should return the right articles', async (done) => {
+    expect(await articleController.getAllArticlesForUser(USER_ID)).toEqual([articleResponse]);
+    done();
+  });
+});
