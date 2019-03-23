@@ -12,11 +12,14 @@ import {EmailDoesNotExistError} from "./exceptions/EmailDoesNotExistError";
 import {CredentialsDoesNotMatchError} from "./exceptions/CredentialsDoesNotMatchError";
 import {CryptoUtils} from "./utils/CryptoUtils";
 import {TokenUtil} from "./utils/TokenUtil";
-import {logger} from "../../logger";
 import {IdDoesNotExistError} from "./exceptions/IdDoesNotExistError";
 
 @injectable()
 export default class AccountService {
+
+  public isAuthenticated(token: string): boolean {
+    return TokenUtil.isValidToken(token);
+  }
 
   private accountSanitizer: AccountSanitizer;
   private accountRepository: AccountRepository;
