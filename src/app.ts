@@ -11,11 +11,12 @@ import {InversifyExpressServer} from 'inversify-express-utils';
 import * as methodOverride from 'method-override';
 import * as morgan from 'morgan';
 import * as path from 'path';
-import {logger} from './logger';
 import * as dotenv from 'dotenv';
 import './interfaces/http/accounts/AccountController'
 import './interfaces/http/healthcheck/HealthCheckController'
+import './interfaces/http/articles/ArticleController'
 import binding from "./binding";
+import {logger} from "./logger";
 
 if (isDev()) dotenv.config();
 
@@ -77,7 +78,7 @@ export class Server {
       app.use(express.static('frontend'));
       app.get('/', (req, res) => res.sendFile('index.html'));
     }
-    // catch 404 and forward to error handler
+    // catch 404 and forward to error handler#
     app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
       err.status = 404;
       next(err);
