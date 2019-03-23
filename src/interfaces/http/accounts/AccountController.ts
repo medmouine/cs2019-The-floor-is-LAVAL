@@ -1,8 +1,8 @@
 import 'reflect-metadata';
 import { controller } from 'inversify-express-utils';
 
-export const BASE_ROUTE_URL: string = '/accounts';
+export const BASE_ACCOUNT_ROUTE: string = '/accounts';
 
-@controller(BASE_ROUTE_URL)
+@controller(BASE_ACCOUNT_ROUTE)
 export class AccountController {
 }
