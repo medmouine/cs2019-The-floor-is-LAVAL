@@ -30,6 +30,8 @@ export class AuthController {
   @httpPost('/authenticate')
   public async authenticate(@requestBody() credentials: Credentials, @response() res: express.Response): Promise<string> {
     res.status(HttpStatus.SUCCESS);
-    return handleServiceError(async () => await this.accountService.authenticate(credentials), res);
+    return handleServiceError(async () => ({
+      accessToken: await this.accountService.authenticate(credentials)
+    }), res);
   }
 }
