@@ -40,13 +40,12 @@
     "reflect-metadata": "^0.1.12",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
+    "ts-jest": "^24.0.0",
     "typemoq": "^2.1.0",
-    "typescript": "^3.0.3",
+    "typescript": "^3.3.4000",
     "uuid": "^3.3.2",
     "winston": "^3.2.1",
-    "yargs": "^13.2.2"
-  },
-  "devDependencies": {
+    "yargs": "^13.2.2",
     "@types/bcrypt": "^3.0.0",
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.4",
@@ -66,17 +65,14 @@
     "@types/uuid": "^3.4.4",
     "codecov": "^3.2.0",
     "cpy-cli": "^2.0.0",
-    "jest-create-mock-instance": "^1.1.0",
-    "jest-express": "^1.10.0",
-    "mocha": "^5.2.0",
     "nodemon": "^1.18.10",
     "nyc": "^13.3.0",
     "ts-node": "^7.0.1",
     "tslint": "^5.10.0",
     "tslint-config-airbnb": "^5.11.1",
-    "tslint-config-prettier": "^1.17.0",
-    "typescript": "^3.3.4000"
+    "tslint-config-prettier": "^1.17.0"
   },
+  "devDependencies": {},
   "jest": {
     "moduleFileExtensions": [
       "ts",
